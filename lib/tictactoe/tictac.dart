@@ -37,6 +37,7 @@ class _TicTacState extends State<TicTac> {
                 width: mediaQueryData.size.width,
             height: mediaQueryData.size.height*0.22,
             decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20),bottomRight: Radius.circular(20) ),
                 color: Colors.white,
               boxShadow: [
                 BoxShadow(
