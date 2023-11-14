@@ -40,82 +40,36 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'dart:io' show Platform;
-
-import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter/services.dart';
+import 'package:trysomethingnew/Animation/AdvanceAnimation.dart';
+import 'package:trysomethingnew/Animation/FadeAnimation.dart';
+import 'package:trysomethingnew/compass.dart';
+import 'package:trysomethingnew/tictactoe/tictac.dart';
 
-
-
-import 'Models/cart.dart';
-import 'Models/catalog.dart';
-import 'Screen/cart.dart';
-import 'Screen/catalog.dart';
-import 'Screen/login.dart';
-import 'common.dart';
-
-void main() {
-  // setupWindow();
-  runApp(const MyApp());
-}
-
-const double windowWidth = 400;
-const double windowHeight = 800;
-
-
-
-GoRouter router() {
-  return GoRouter(
-    initialLocation: '/login',
-    routes: [
-      GoRoute(
-        path: '/login',
-        builder: (context, state) => const MyLogin(),
-      ),
-      GoRoute(
-        path: '/catalog',
-        builder: (context, state) => const MyCatalog(),
-        routes: [
-          GoRoute(
-            path: 'cart',
-            builder: (context, state) => const MyCart(),
-          ),
-        ],
-      ),
-    ],
+Future<void> main()   async {
+  runApp(MyApp());
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent, // Make status bar translucent
+      systemNavigationBarColor: Colors.transparent,
+      statusBarIconBrightness: Brightness.light,
+      systemNavigationBarIconBrightness: Brightness.light,// Make navigation bar translucent
+    ),
   );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
-    // Using MultiProvider is convenient when providing multiple objects.
-    return MultiProvider(
-      providers: [
-        // In this sample app, CatalogModel never changes, so a simple Provider
-        // is sufficient.
-        Provider(create: (context) => CatalogModel()),
-        // CartModel is implemented as a ChangeNotifier, which calls for the use
-        // of ChangeNotifierProvider. Moreover, CartModel depends
-        // on CatalogModel, so a ProxyProvider is needed.
-        ChangeNotifierProxyProvider<CatalogModel, CartModel>(
-          create: (context) => CartModel(),
-          update: (context, catalog, cart) {
-            if (cart == null) throw ArgumentError.notNull('cart');
-            cart.catalog = catalog;
-            return cart;
-          },
-        ),
-      ],
-      child: MaterialApp.router(
-        title: 'Provider Demo',
-        theme: appTheme,
-        routerConfig: router(),
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Color.fromARGB(500, 100, 203, 203)),
+        useMaterial3: true,
       ),
+      home: const AdvancesAnimation(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
