@@ -65,7 +65,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Color.fromARGB(500, 100, 203, 203)),
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(500, 100, 203, 203)),
         useMaterial3: true,
       ),
       home: const AdvancesAnimation(),
