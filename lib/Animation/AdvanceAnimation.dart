@@ -14,8 +14,8 @@ class _AdvancesAnimationState extends State<AdvancesAnimation> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Color(0xFF15202D),
-        child: SizedBox.expand(
+        color: const Color(0xFF15202D),
+        child: const SizedBox.expand(
           child: VariousDiscs(50),
         ),
       ),
@@ -74,11 +74,11 @@ class _VariousDiscsState extends State<VariousDiscs>{
             children: [
               for(final disc in _discs)
                 Positioned.fill(child: AnimatedAlign(
-                  duration: Duration(milliseconds: 500),
+                  duration: const Duration(milliseconds: 500),
                   curve: Curves.easeInOut,
                   alignment: disc.alignment,
                   child: AnimatedContainer(
-                    duration: Duration(milliseconds: 500),
+                    duration: const Duration(milliseconds: 500),
                     decoration: BoxDecoration(
                       color: disc.color,
                       shape: BoxShape.circle
