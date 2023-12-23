@@ -13,8 +13,8 @@ class ApiServices{
     );
     print("Url");
     if (response.statusCode == 200) {
-      final Map<String, dynamic> data = json.decode(response.body);
-      final List<dynamic> results = data['results'];
+      final List<Map<String, dynamic>> data = json.decode(response.body);
+      // final List<dynamic> results = [data['results']];
       List<ProductModel> pokemonList = [];
       for (Map result in results) {
         final pokemonResponse = await http.get(Uri.parse(result['url']));

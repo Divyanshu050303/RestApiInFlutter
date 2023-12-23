@@ -15,10 +15,8 @@ class ProductController extends GetxController{
     try{
       isLoading(true);
       var product=await ApiServices.fetchProduct();
-      if(product!= null){
-        productList.assignAll(product);
-      }
-    }
+      productList.assignAll(product);
+        }
     finally {
       isLoading(false);
     }
