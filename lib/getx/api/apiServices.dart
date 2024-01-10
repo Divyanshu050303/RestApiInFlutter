@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:http/http.dart'as http;
-import 'package:trysomethingnew/getx/api/Makeup.dart';
 import 'package:trysomethingnew/getx/api/ProductModel.dart';
 
 class ApiServices{
@@ -16,14 +15,7 @@ class ApiServices{
       final List<Map<String, dynamic>> data = json.decode(response.body);
       // final List<dynamic> results = [data['results']];
       List<ProductModel> pokemonList = [];
-      for (Map result in results) {
-        final pokemonResponse = await http.get(Uri.parse(result['url']));
-        if (pokemonResponse.statusCode == 200) {
-          final Map<String, dynamic> pokemonData =
-          json.decode(pokemonResponse.body);
-          pokemonList.add(ProductModel.fromJson(pokemonData));
-        }
-      }
+      
       return pokemonList;
     } else {
       throw Exception('Failed to load Pokémon');
