@@ -40,35 +40,35 @@ class _BasicAlertDialogState extends State<BasicAlertDialog> {
               context: context,
               builder: (BuildContext context) {
                 return AlertDialog(
-                  title: Text('Confirmation'),
-                  content: Text('Are you sure?'),
+                  title: const Text('Confirmation'),
+                  content: const Text('Are you sure?'),
                   actions: [
                     TextButton(
                       onPressed: () {
                         Navigator.of(context).pop();
                       },
-                      child: Text('Cancel'),
+                      child: const Text('Cancel'),
                     ),
                     TextButton(
                       onPressed: () {
                         // Perform the action
                         Navigator.of(context).pop();
                       },
-                      child: Text('OK'),
+                      child: const Text('OK'),
                     ),
                   ],
                 );
               },
             );
 
-          }, child: Text("Confirmation Dialog")),
+          }, child: const Text("Confirmation Dialog")),
 
           ElevatedButton(onPressed: (){
             showDialog(
               context: context,
               builder: (BuildContext context) {
                 return AlertDialog(
-                  title: Text('Enter Something'),
+                  title: const Text('Enter Something'),
                   content: const TextField(
 
                   ),
@@ -77,21 +77,21 @@ class _BasicAlertDialogState extends State<BasicAlertDialog> {
                       onPressed: () {
                         Navigator.of(context).pop();
                       },
-                      child: Text('Cancel'),
+                      child: const Text('Cancel'),
                     ),
                     TextButton(
                       onPressed: () {
                         // Process the input
                         Navigator.of(context).pop();
                       },
-                      child: Text('OK'),
+                      child: const Text('OK'),
                     ),
                   ],
                 );
               },
             );
 
-          }, child: Text("Input Dialog"))
+          }, child: const Text("Input Dialog"))
                 ],
               ),
         ));
